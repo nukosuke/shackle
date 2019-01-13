@@ -333,8 +333,7 @@ frame if possible, otherwise pop up a new frame."
                       (funcall fun)))
              (window (frame-selected-window frame)))
         (prog1 (window--display-buffer
-                buffer window 'frame alist
-                display-buffer-mark-dedicated)
+                buffer window 'frame alist)
           (unless (cdr (assq 'inhibit-switch-frame alist))
             (window--maybe-raise-frame frame)))))))
 
@@ -355,8 +354,7 @@ window if possible."
                         (next-window nil 'nominibuf)
                       (shackle--split-some-window frame alist))))
         (prog1 (window--display-buffer
-                buffer window 'window alist
-                display-buffer-mark-dedicated)
+                buffer window 'window alist)
           (when window
             (setq shackle-last-window window
                   shackle-last-buffer buffer))
@@ -396,8 +394,7 @@ the :size key with a number value."
             (error "Invalid alignment size %s, aborting" new-size)
           (let ((window (split-window (frame-root-window frame)
                                       new-size alignment)))
-            (prog1 (window--display-buffer buffer window 'window alist
-                                           display-buffer-mark-dedicated)
+            (prog1 (window--display-buffer buffer window 'window alist)
               (when window
                 (setq shackle-last-window window
                       shackle-last-buffer buffer))
